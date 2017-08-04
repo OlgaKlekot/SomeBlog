@@ -26,7 +26,7 @@ if (isset($_GET['title'])) {
     $STH = $DBH->prepare("SELECT * FROM  articles a WHERE a.title = :title GROUP BY a.id");
     $STH->bindValue(':title', $_GET['title']);
 } else {
-    $STH = $DBH->query("SELECT  * FROM  articles a GROUP BY a.id LIMIT $art_limit OFFSET $art");
+    $STH = $DBH->query("SELECT  * FROM  articles a GROUP BY a.id ORDER BY a.creation_date DESC LIMIT $art_limit OFFSET $art");
 };
 if (isset($_POST['adding'])) {
     header("Location: http://someblog.com/mainPage.php");
